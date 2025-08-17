@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background: rgb(148, 120, 120);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        h1{
+            display: flex;
+            justify-content: center;
+        }
+        div{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            display: flex;
+            padding: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>TODO App</h1>
+    <div style="display: flex;">
+        <input style="height: 40px; width: 300px; justify-self: center;" type="text" placeholder=" Enter Your Todo!"></input>
+        <button style=" margin-left: 10px; width: 100px; display: flex; justify-self: center; font-size: larger; font-weight: bolder; text-align: center; background-color: rgb(87, 87, 194); border-radius: 5px;" onclick="AddTodo()">Submit</button>
+    </div>
+</body>
+<script>
+    let ctr = 1;
+    function AddTodo(){
+        const inputEl = document.querySelector("input");
+        const value = inputEl.value;
+        const newdivEl = document.createElement("div");
+        newdivEl.setAttribute("id", ctr);
+        newdivEl.innerHTML="<div>" + value + "</div> <button onclick='DelTodo("+ctr+")'> Delete </button>"
+        const parent = document.querySelector("body")
+        parent.appendChild(newdivEl)
+        ctr = ctr+1;
+    }
+
+    function DelTodo(index){
+        const element = document.getElementById(index)
+        element.parentNode.removeChild(element)
+    }
+</script>
+</html>
